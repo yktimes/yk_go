@@ -6,9 +6,13 @@
 minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_681895_q7ptjm0r8n.css">
-    <link rel="stylesheet" href="{% static 'css/common/auth.min.css' %}">
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/common/auth.min.css' %}">
+    <script src="{% static 'js/ykajax.min.js' %}"></script>
+
+    <script src="{% static 'js/message.min.js' %}"></script>
+    <script src="{% static 'js/front_base.min.js' %}"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -34,7 +38,7 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
                         {% if user.is_staff %}
                             <a href="">管理系统</a>
                         {% endif %}
-                        <a href="">退出登录</a>
+                        <a href="{% url 'ykauth:logout' %}">退出登录</a>
                     </div>
                 {% else %}
                     <a href="#" class="signin-btn">登录</a> /

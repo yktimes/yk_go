@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from .forms import LoginForm
 from django.http import JsonResponse
 from utils import restful
-
+from django.shortcuts import redirect,reverse
 @require_POST
 def login_view(request):
     form = LoginForm(request.POST)
@@ -34,4 +34,9 @@ def login_view(request):
         errors =  form.get_errors()
 
         return restful.params_error(message=errors)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(reverse("index"))
 
