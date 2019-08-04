@@ -69,7 +69,7 @@ Auth.prototype.listenSigninEvent = function () {
         var password = passwordInput.val();
         var remember = rememberInput.prop("checked");
 
-        xfzajax.post({
+        ykajax.post({
             'url': '/account/login/',
             'data': {
                 'telephone': telephone,
@@ -77,6 +77,7 @@ Auth.prototype.listenSigninEvent = function () {
                 'remember': remember?1:0
             },
             'success': function (result) {
+                alert(result.message)
                 if(result['code'] == 200){
                     self.hideEvent();
                     window.location.reload();
@@ -89,6 +90,7 @@ Auth.prototype.listenSigninEvent = function () {
                         for(var key in messageObject){
                             var messages = messageObject[key];
                             var message = messages[0];
+                            alert(message)
                             window.messageBox.show(message);
                         }
                     }

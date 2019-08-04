@@ -10,12 +10,13 @@ body{
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     //overflow: scroll;
     overflow-y: scroll;
     display: none;
     z-index: 100;
-     .auth-wrapper{
+
+    .auth-wrapper{
         $authWrapperHeight: 520px;
         $authWrapperWidth: 400px;
         width: $authWrapperWidth;
@@ -118,6 +119,10 @@ body{
                                     line-height: 40px;
                                     box-sizing: border-box;
                                     cursor: pointer;
+                                }
+                                .disabled{
+                                    color: #ccc;
+                                    border-color: #ccc;
                                 }
                             }
                         }

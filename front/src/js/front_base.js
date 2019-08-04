@@ -153,10 +153,26 @@ Auth.prototype.listenSigninEvent = function () {
                 'password': password,
                 'remember': remember?1:0
             },
-            'success': function (result) {
-                self.hideEvent();
-                window.location.reload();
-            }
+             'success': function (result) {
+
+                if(result['code'] == 200){
+                    self.hideEvent();
+                    window.location.reload();
+                }else{
+                    var messageObject = result['message'];
+                    if(typeof messageObject == 'string' || messageObject.constructor == String){
+                        window.messageBox.show(messageObject);
+                    }else{
+                        // {"password":['密码最大长度不能超过20为！','xxx'],"telephone":['xx','x']}
+                        for(var key in messageObject){
+                            var messages = messageObject[key];
+                            var message = messages[0];
+
+                            window.messageBox.show(message);
+                        }
+                    }
+                }
+            },
         });
     });
 };
@@ -191,9 +207,27 @@ Auth.prototype.listenSignupEvent = function () {
                 'password2': password2,
                 'sms_captcha': sms_captcha
             },
-            'success': function (result) {
-                window.location.reload();
-            }
+              'success': function (result) {
+
+                if(result['code'] == 200){
+
+                    window.location.reload();
+                }else{
+                    var messageObject = result['message'];
+                    if(typeof messageObject == 'string' || messageObject.constructor == String){
+                        window.messageBox.show(messageObject);
+                        window.location.reload();
+                    }else{
+                        // {"password":['密码最大长度不能超过20为！','xxx'],"telephone":['xx','x']}
+                        for(var key in messageObject){
+                            var messages = messageObject[key];
+                            var message = messages[0];
+
+                            window.messageBox.show(message);
+                        }
+                    }
+                }
+            },
         });
     });
 };
