@@ -13,6 +13,8 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 
     <script src="{% static 'js/message.min.js' %}"></script>
     <script src="{% static 'js/front_base.min.js' %}"></script>
+
+
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -25,7 +27,7 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
             <ul class="nav">
                 <li class="active"><a href="/">陇桥世界</a></li>
                 <li><a href="#">陇桥课堂</a></li>
-                <li><a href="#">付费资讯</a></li>
+                <li><a href="#">陇桥资讯</a></li>
                 <li><a href="#">搜索</a></li>
             </ul>
 
@@ -35,8 +37,8 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
                     <a href="#" class="authenticated-box">{{ user.username }}</a>
                     <div class="user-more-box">
                         <i class="triangle"></i>
-                        {% if user.is_staff %}
-                            <a href="">管理系统</a>
+                        {% if user.is_staff or user.is_superuser %}
+                            <a href="{% url 'cms:index' %}">管理系统</a>
                         {% endif %}
                         <a href="{% url 'ykauth:logout' %}">退出登录</a>
                     </div>
@@ -55,7 +57,7 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
                 <div class="detail-group">
                     <div class="line1">
                         <ul class="links">
-                            <li><a href="#">关于小饭桌</a></li>
+                            <li><a href="#">关于陇桥范</a></li>
                             <li><a href="#">创业课堂</a></li>
                             <li><a href="#">寻求报道</a></li>
                             <li><a href="#">创业礼包</a></li>
@@ -65,7 +67,7 @@ minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
                             <ul class="social-group">
                                 <li class="weixin">
                                     <div class="wx-qrcode"></div>
-                                    <span class="text">xfz008
+                                    <span class="text">陇桥008
                                     </span>
                                 </li>
                                 <li class="weibo">

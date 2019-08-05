@@ -19,13 +19,14 @@ class UserManager(BaseUserManager):
         user.save() # 记得保存哦
         return user
 
-    # 创建 普通用户
+    # 创建
     def create_user(self,telephone,username,password,**kwargs):
         kwargs['is_superuser']=False
         return self._create_user(telephone,username,password,**kwargs)
 
     def create_superuser(self,telephone,username,password,**kwargs):
         kwargs['is_superuser'] =True
+        kwargs['is_staff'] =True
         return self._create_user(telephone, username, password, **kwargs)
 
 

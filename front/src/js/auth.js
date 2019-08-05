@@ -91,7 +91,7 @@ Auth.prototype.listenSigninEvent = function () {
                             var messages = messageObject[key];
                             var message = messages[0];
                             alert(message)
-                            window.messageBox.show(message);
+                            window.messageBox.showError(message);
                         }
                     }
                 }

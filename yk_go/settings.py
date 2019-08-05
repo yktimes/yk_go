@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "apps.news",
     "apps.cms",
     "apps.ykauth",
+    'apps.ueditor',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,9 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,"front","dist"),
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 # 用户模型
 AUTH_USER_MODEL="ykauth.User"
 
@@ -170,3 +174,27 @@ CACHES = {
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
+
+
+
+# Qiniu配置
+QINIU_ACCESS_KEY = 'xx'
+QINIU_SECRET_KEY = 'xx'
+QINIU_BUCKET_NAME = 'ykgo'
+QINIU_DOMAIN = 'http://pvr02pml2.bkt.clouddn.com/'
+
+# 七牛和自己的服务器，最少要配置一个
+# UEditor配置
+
+# 七牛
+UEDITOR_UPLOAD_TO_QINIU = True
+UEDITOR_QINIU_ACCESS_KEY = QINIU_ACCESS_KEY
+UEDITOR_QINIU_SECRET_KEY = QINIU_SECRET_KEY
+UEDITOR_QINIU_BUCKET_NAME = QINIU_BUCKET_NAME
+UEDITOR_QINIU_DOMAIN = QINIU_DOMAIN
+
+# 自己的服务器
+UEDITOR_UPLOAD_TO_SERVER = True
+UEDITOR_UPLOAD_PATH = MEDIA_ROOT
+
+UEDITOR_CONFIG_PATH = os.path.join(BASE_DIR,'front','dist','ueditor','config.json')

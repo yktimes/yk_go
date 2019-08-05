@@ -168,7 +168,7 @@ Auth.prototype.listenSigninEvent = function () {
                             var messages = messageObject[key];
                             var message = messages[0];
 
-                            window.messageBox.show(message);
+                            window.messageBox.showError(message);
                         }
                     }
                 }
@@ -223,7 +223,7 @@ Auth.prototype.listenSignupEvent = function () {
                             var messages = messageObject[key];
                             var message = messages[0];
 
-                            window.messageBox.show(message);
+                            window.messageBox.showError(message);
                         }
                     }
                 }
